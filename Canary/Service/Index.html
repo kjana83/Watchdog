@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-1.9.1.min.js"></script>
+    <script src="../Scripts/underscore.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="js/service.js"></script>
+    <title>Service Manager - Results</title>
+
+</head>
+<body data-ng-app="Service">
+    <div class="container" data-ng-controller="ServiceController">
+        <h1>Service Monitor</h1>
+        <h4>Status</h4>
+
+        <table class="table table-condensed table-hover">
+            <thead>
+                <tr class="active">
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Url</th>
+                    <th>Status</th>
+                    <th>Duration</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tr data-ng-repeat="service in Model.Results">
+                <td data-ng-bind="service.ServiceId" style="vertical-align: middle"></td>
+                <td data-ng-bind="service.Name" style="vertical-align: middle"></td>
+                <td data-ng-bind="service.Url" style="vertical-align: middle"></td>
+                <td>
+                    <img src="../Content/Images/blank_badge_green.png" data-ng-show="service.Status=='Green'" class="img-rounded" style="height: 30px; width: 30px" />
+                    <img src="../Content/Images/blank_badge_orange.png" data-ng-show="service.Status=='Amber'" class="img-rounded" style="height: 30px; width: 30px" />
+                    <img src="../Content/Images/blank_badge_red.png" data-ng-show="service.Status=='Red'" class="img-rounded" style="height: 30px; width: 30px" />
+
+                </td>
+                <td data-ng-bind="service.Duration|date:'ss.sss'" style="vertical-align: middle"></td>
+                <td data-ng-bind="service.Date|date:'medium'" style="vertical-align: middle"></td>
+
+            </tr>
+        </table>
+
+        <!--<div class="col-sm-10" data-ng-repeat="service in Model.Results">
+
+            <div class="row">
+                <div class="col-sm-1" data-ng-bind="service.ServiceId"></div>
+                <div class="col-sm-3" data-ng-bind="service.Name"></div>
+                <div class="col-sm-2" data-ng-bind="service.Url"></div>
+
+                <div class="col-sm-1">
+                    <img src="../Content/Images/blank_badge_green.png" data-ng-show="service.Status=='Green'" class="img-rounded" style="height: 50px; width: 50px" />
+                    <img src="../Content/Images/blank_badge_orange.png" data-ng-show="service.Status=='Amber'" class="img-rounded" style="height: 50px; width: 50px" />
+                    <img src="../Content/Images/blank_badge_red.png" data-ng-show="service.Status=='Red'" class="img-rounded" style="height: 50px; width: 50px" />
+                </div>
+                <div class="col-sm-2" data-ng-bind="service.Duration|date:'ss.sss'"></div>
+                <div class="col-sm-3" data-ng-bind="service.Date|date:'medium'"></div>
+            </div>
+        </div>-->
+    </div>
+</body>
+</html>
