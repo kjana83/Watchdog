@@ -29,6 +29,18 @@ var Model = function(http) {
             result.Url = matchedService.Url;
         });
     };
+
+    //this.ShowResponse = function(service) {
+    //    var modalInstance = modal.open({
+    //        templateUrl: 'Response.html',
+    //        controller: ResponseController,
+    //        resolve: {
+    //            service:function() {
+    //                return service;
+    //            }
+    //        }
+    //    });
+    //};
 };
 
 serviceModule.service('ServiceService', ['$http', function(http) {
@@ -45,4 +57,5 @@ serviceModule.controller('ServiceController', ['ServiceService', '$scope', '$tim
         $timeout(getResults, 60000);
     };
     getResults();
-}]);
+    }]);
+

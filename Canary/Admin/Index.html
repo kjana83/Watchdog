@@ -2,9 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../Content/toastr.css" rel="stylesheet"/>
     <script src="../Scripts/jquery-1.9.1.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/angular.min.js"></script>
+    <script src="../Scripts/toastr.min.js"></script>
     <script src="js/admin.js"></script>
     <title>Service Manager - Admin</title>
 </head>
@@ -69,7 +71,8 @@
                 <button type="button" class="btn btn-default">Clear</button>
             </div>
         </form>
-
+        <div class="clearfix"></div>
+        <h4>Service List</h4>
         <div class="row">
             <div class="col-sm-6 col-md-4" data-ng-repeat="service in Model.ServiceList">
                 <div class="alert alert-warning">
