@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Interface\ICommandHandler.cs" />
     <Compile Include="Interface\IServiceQuery.cs" />
+    <Compile Include="Interface\IServiceTester.cs" />
     <Compile Include="Models\EmptyParameter.cs" />
     <Compile Include="Models\GeneralConstants.cs" />
     <Compile Include="Models\ServiceDto.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="ServiceQuery.cs" />
     <Compile Include="ServiceResultsCommandHandler.cs" />
     <Compile Include="ServiceResultsQuery.cs" />
+    <Compile Include="ServiceTester.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
