@@ -1,6 +1,6 @@
 ﻿var adminModule = angular.module('Admin', []);
 
-var ModelAdmin = function (http) {
+var ModelAdmin = function (http, rootScope) {
     var self = this;
     this.Id = '';
     this.Name = '';
@@ -9,9 +9,19 @@ var ModelAdmin = function (http) {
     this.Method = 'Post';
     this.Request = '';
     this.Keyword = '';
+    this.Response = '';
+    this.Status = '';
     this.ContentType = 'application/json';
     this.CreateService = function () {
-        var service = {
+        http.post('/api/ServiceAdmin', self.CollectService()).success(function (data, status, headers, config) {
+            toastr.info('Service created successfully');
+            self.AddToList(service);
+        }).error(function (data, status, headers, config) {
+        });
+    };
+
+    this.CollectService = function () {
+        return {
             Url: self.Url,
             Name: self.Name,
             SoapAction: self.SoapAction,
@@ -20,12 +30,20 @@ var ModelAdmin = function (http) {
             Keyword: self.Keyword,
             ContentType: self.ContentType
         };
-        http.post('/api/ServiceAdmin', service).success(function (data, status, headers, config) {
-            toastr.info('Service created successfully');
-            self.AddToList(service);
-        }).error(function (data, status, headers, config) {
+    };
+
+    this.TestService = function (service) {
+        service = service || self.CollectService();
+        http.post('/api/Service', service).success(function (data, status, header, config) {
+            var result = angular.fromJson(data);
+            rootScope.service = {};
+            rootScope.service.Response = result.Response;
+            rootScope.service.Status = result.Status;
+        }).error(function (data, status, header, config) {
+
         });
     };
+
     this.AddToList = function (service) {
         self.ServiceList.push(service);
         self.ClearAll();
@@ -51,8 +69,8 @@ var ModelAdmin = function (http) {
     };
 };
 
-adminModule.service('AdminService', ['$http', function (http) {
-    var model = new ModelAdmin(http);
+adminModule.service('AdminService', ['$http','$rootScope', function (http,rootScope) {
+    var model = new ModelAdmin(http, rootScope);
     return model;
 }]);
 

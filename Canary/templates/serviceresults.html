@@ -3,10 +3,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Service Response</h4>
+                <h4 class="modal-title">Service Response
+                    <img src="../Content/Images/blank_badge_green.png" data-ng-show="service.Status=='Green'" class="img-rounded" style="height: 30px; width: 30px" />
+                    <img src="../Content/Images/blank_badge_orange.png" data-ng-show="service.Status=='Amber'" class="img-rounded" style="height: 30px; width: 30px" />
+                    <img src="../Content/Images/blank_badge_red.png" data-ng-show="service.Status=='Red'" class="img-rounded" style="height: 30px; width: 30px" />
+                </h4>
             </div>
             <div class="modal-body">
-                <pre class="brush: xml">
+                <pre>
                                         <span data-ng-bind="service.Response"></span>
                                     </pre>
             </div>
