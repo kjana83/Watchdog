@@ -1,0 +1,22 @@
+﻿Installing assembly 'E:\Jana\Workshop\GitHubRepositories\Watchdog\Sentry\bin\Debug\Sentry.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = E:\Jana\Workshop\GitHubRepositories\Watchdog\Sentry\bin\Debug\Sentry.InstallLog
+   assemblypath = E:\Jana\Workshop\GitHubRepositories\Watchdog\Sentry\bin\Debug\Sentry.exe
+Installing service Sentry...
+Service Sentry has been successfully installed.
+Creating EventLog source Sentry in log Application...
+Committing assembly 'E:\Jana\Workshop\GitHubRepositories\Watchdog\Sentry\bin\Debug\Sentry.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = E:\Jana\Workshop\GitHubRepositories\Watchdog\Sentry\bin\Debug\Sentry.InstallLog
+   assemblypath = E:\Jana\Workshop\GitHubRepositories\Watchdog\Sentry\bin\Debug\Sentry.exe
+Uninstalling assembly 'E:\Jana\Workshop\GitHubRepositories\Watchdog\Sentry\bin\Debug\Sentry.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = E:\Jana\Workshop\GitHubRepositories\Watchdog\Sentry\bin\Debug\Sentry.InstallLog
+   assemblypath = E:\Jana\Workshop\GitHubRepositories\Watchdog\Sentry\bin\Debug\Sentry.exe
+Removing EventLog source Sentry.
+Service Sentry is being removed from the system...
+Service Sentry was successfully removed from the system.
+Attempt to stop service Sentry.
