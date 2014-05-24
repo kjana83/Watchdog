@@ -57,15 +57,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interface\ICommandHandler.cs" />
+    <Compile Include="Interface\ILogWriter.cs" />
     <Compile Include="Interface\IServiceQuery.cs" />
     <Compile Include="Interface\IServiceTester.cs" />
     <Compile Include="Models\EmptyParameter.cs" />
     <Compile Include="Models\GeneralConstants.cs" />
     <Compile Include="Models\ServiceDto.cs" />
+    <Compile Include="Models\ServiceReportDto.cs" />
     <Compile Include="Models\ServiceResultsDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceCommandHandler.cs" />
     <Compile Include="ServiceQuery.cs" />
+    <Compile Include="ServiceReportQuery.cs" />
     <Compile Include="ServiceResultsCommandHandler.cs" />
     <Compile Include="ServiceResultsQuery.cs" />
     <Compile Include="ServiceTester.cs" />

@@ -25,7 +25,7 @@ namespace BusinessFacade
                 var request = (HttpWebRequest)WebRequest.Create(service.Url);
                 request.ContentType = service.ContentType;
                 request.Method = service.Method;
-
+                
                 if (service.Method == "Post")
                 {
                     var dataStream = request.GetRequestStream();
@@ -34,20 +34,24 @@ namespace BusinessFacade
                     dataStream.Close();
                 }
                 var requestTimeSpan = DateTime.Now;
-                var response = (HttpWebResponse)request.GetResponse();
-                var responseTimeSpan = DateTime.Now;
-                serviceResults.Duration = responseTimeSpan - requestTimeSpan;
 
-                var responseStream = response.GetResponseStream();
-                var result = new byte[response.ContentLength];
-                responseStream.Read(result, 0, (int)response.ContentLength);
-                var resultString = Encoding.UTF8.GetString(result);
-                if (resultString.Contains(service.Keyword))
+                using(var response = (HttpWebResponse)request.GetResponse())
                 {
-                    serviceResults.Status = "Green";
-                }
+                    var responseTimeSpan = DateTime.Now;
+                    serviceResults.Duration = responseTimeSpan - requestTimeSpan;
 
-                serviceResults.Response = resultString;
+                    var responseStream = response.GetResponseStream();
+                    var result = new byte[response.ContentLength];
+                    responseStream.Read(result, 0, (int) response.ContentLength);
+                    var resultString = Encoding.UTF8.GetString(result);
+                    if (resultString.Contains(service.Keyword))
+                    {
+                        serviceResults.Status = "Green";
+                    }
+
+                    serviceResults.Response = resultString;
+                }
+                request = null;
             }
             catch (Exception exception)
             {

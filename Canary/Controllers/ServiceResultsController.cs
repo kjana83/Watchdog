@@ -15,8 +15,11 @@ namespace Canary.Controllers
     /// </summary>
     public class ServiceResultsController : ApiController
     {
+        /// <summary>
+        /// The service results query
+        /// </summary>
         private IQueryFor<EmptyParameter, IEnumerable<ServiceResultsDto>> serviceResultsQuery;
-
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceResultsController"/> class.
         /// </summary>
@@ -33,6 +36,7 @@ namespace Canary.Controllers
         public HttpResponseMessage Get()
         {
             var serviceResults = this.serviceResultsQuery.ExecuteQueryWith((EmptyParameter) null);
+            
             return this.Request.CreateResponse(HttpStatusCode.OK, serviceResults);
         }
     }

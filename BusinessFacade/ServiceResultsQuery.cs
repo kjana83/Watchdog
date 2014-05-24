@@ -27,8 +27,10 @@ namespace BusinessFacade
                 var lists = serviceClient.Lists[GeneralConstants.SERVICE_RESULTS].ToList().OrderByDescending(p => p.Date);
 
                 var id = redisClient.Get<int>(GeneralConstants.SERVICE_ID);
-
-                return lists.Take(id);
+                for (int index = 1; index <= id; index++)
+                {
+                    yield return lists.LastOrDefault(p => p.ServiceId == index);
+                }
             }
         }
     }

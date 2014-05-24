@@ -6,17 +6,39 @@
     <script src="../Scripts/underscore.min.js"> </script>
     <script src="../Scripts/bootstrap.min.js"> </script>
     <script src="../Scripts/angular.min.js"> </script>
-    <script src="js/service.js"> </script>
+    <script src="js/reports.js"> </script>
     <title>Service Manager - Results</title>
 </head>
 <body data-ng-app="Service">
     <div class="container" data-ng-controller="ServiceController">
-        <h1>Service Monitor <small>Status</small></h1>
+        <h1>Service Monitor <small>Reports</small></h1>
+        
 
+        <form class="form-inline">
+            <div class="col-md-12 well form-group">
+                <div class="row">
+                    <label class="control-label col-sm-1" for="servicedropdown">Services</label>
+                    <div class="col-sm-3">
+                        <select id="servicedropdown" class="form-control" data-ng-model="Model.ServiceId"
+                            data-ng-options="service.Id as service.Name for service in Model.ServiceList">
+                        </select>
+                    </div>
+                    <label class="control-label col-sm-1" for="servicedropdown">Date</label>
+                    <div class="col-sm-2">
+                        <input type="date" class="form-control" data-ng-model="Model.FromDate" />
+                    </div>
+                    <!--                <label class="control-label col-sm-1" for="servicedropdown">To Date</label>-->
+                    <div class="col-sm-2">
+                        <input type="date" class="form-control" data-ng-model="Model.ToDate" />
+                    </div>
+                    <button type="submit" class="btn btn-success col-sm-1" data-ng-click="Model.GetReports()">Submit</button>
+                </div>
+            </div>
+        </form>
+        <div class="row help-block"></div>
         <table class="table table-condensed table-hover">
             <thead>
                 <tr class="active">
-                    <th>Id</th>
                     <th></th>
                     <th>Name</th>
                     <th>Url</th>
@@ -26,7 +48,6 @@
                 </tr>
             </thead>
             <tr data-ng-repeat="service in Model.Results">
-                <td data-ng-bind="service.ServiceId" style="vertical-align: middle"></td>
                 <td>
                     <div data-ng-include="" data-src="'../templates/serviceresults.html'"></div>
                 </td>
@@ -40,11 +61,8 @@
                 </td>
                 <td data-ng-bind="service.Duration|date:'ss.sss'" style="vertical-align: middle"></td>
                 <td data-ng-bind="service.Date|date:'medium'" style="vertical-align: middle"></td>
-
-
             </tr>
         </table>
     </div>
-
 </body>
 </html>

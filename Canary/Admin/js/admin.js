@@ -13,7 +13,8 @@ var ModelAdmin = function (http, rootScope) {
     this.Status = '';
     this.ContentType = 'application/json';
     this.CreateService = function () {
-        http.post('/api/ServiceAdmin', self.CollectService()).success(function (data, status, headers, config) {
+        var service = self.CollectService();
+        http.post('/api/ServiceAdmin', service).success(function (data, status, headers, config) {
             toastr.info('Service created successfully');
             self.AddToList(service);
         }).error(function (data, status, headers, config) {
@@ -34,9 +35,9 @@ var ModelAdmin = function (http, rootScope) {
 
     this.TestService = function (service) {
         service = service || self.CollectService();
+        rootScope.service = {};
         http.post('/api/Service', service).success(function (data, status, header, config) {
             var result = angular.fromJson(data);
-            rootScope.service = {};
             rootScope.service.Response = result.Response;
             rootScope.service.Status = result.Status;
         }).error(function (data, status, header, config) {
